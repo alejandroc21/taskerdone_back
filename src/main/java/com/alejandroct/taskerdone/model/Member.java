@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ProjectMember {
+public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

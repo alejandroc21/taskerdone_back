@@ -2,6 +2,7 @@ package com.alejandroct.taskerdone.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Data
 public class User {
     @Id
@@ -26,6 +28,5 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user")
-    private List<ProjectMember> memberships;
-
+    private List<Member> memberships;
 }

@@ -20,5 +20,5 @@ public class Project {
     private String name;
 
     @OneToMany(mappedBy = "project")
-    private List<ProjectMember> members;
+    private List<Member> members;
 }
