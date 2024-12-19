@@ -1,5 +1,6 @@
 package com.alejandroct.taskerdone.service.impl;
 
+import com.alejandroct.taskerdone.constants.ExceptionMessages;
 import com.alejandroct.taskerdone.dto.UserDTO;
 import com.alejandroct.taskerdone.mapper.Mappers;
 import com.alejandroct.taskerdone.model.User;
@@ -27,7 +28,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User findUserByEmail(String email) {
         return this.userRepository.findByEmail(email)
-                .orElseThrow(() -> new EntityNotFoundException("user not found"));
+                .orElseThrow(() -> new EntityNotFoundException(ExceptionMessages.USER_NOT_FOUND));
     }
 
     @Override

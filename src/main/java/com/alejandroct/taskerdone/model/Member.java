@@ -19,7 +19,6 @@ public class Member {
     @Column(nullable = false)
     private MemberRole role;
 
-
     @ManyToOne
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;

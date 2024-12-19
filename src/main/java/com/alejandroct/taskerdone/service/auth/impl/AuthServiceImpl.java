@@ -1,5 +1,6 @@
 package com.alejandroct.taskerdone.service.auth.impl;
 
+import com.alejandroct.taskerdone.constants.ExceptionMessages;
 import com.alejandroct.taskerdone.dto.auth.LoginRequest;
 import com.alejandroct.taskerdone.dto.auth.RegisterRequest;
 import com.alejandroct.taskerdone.dto.auth.TokenResponse;
@@ -33,7 +34,7 @@ public class AuthServiceImpl implements IAuthService {
     @Override
     public TokenResponse register(RegisterRequest request) {
         if(this.userService.userExist(request.email())){
-            throw  new IllegalArgumentException("email is already in use");
+            throw new IllegalArgumentException(ExceptionMessages.EMAIL_IN_USE);
         }
         User user = User.builder()
                 .name(request.name())
