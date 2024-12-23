@@ -54,7 +54,7 @@ public class JwtServiceImpl implements IJwtService {
         return claimsFunction.apply(claims);
     }
 
-    private Claims getAllClaims(String token){
+    private Claims getAllClaims(String token) {
         return Jwts.parser()
                 .verifyWith(this.getSecretKey())
                 .build()

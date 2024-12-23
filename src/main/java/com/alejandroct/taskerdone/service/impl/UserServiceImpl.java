@@ -6,6 +6,7 @@ import com.alejandroct.taskerdone.mapper.Mappers;
 import com.alejandroct.taskerdone.model.User;
 import com.alejandroct.taskerdone.repository.UserRepository;
 import com.alejandroct.taskerdone.service.IUserService;
+import com.alejandroct.taskerdone.service.auth.IJwtService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserServiceImpl implements IUserService {
     private final UserRepository userRepository;
+    private final IJwtService jwtService;
 
     @Override
     public boolean userExist(String email) {
@@ -34,5 +36,12 @@ public class UserServiceImpl implements IUserService {
     @Override
     public UserDTO findUserDTObyEmail(String email) {
         return Mappers.getUserDTO(this.findUserByEmail(email));
+    }
+
+    @Override
+    public User findUserByJwtToken(String authHeader) {
+        String token = authHeader.substring(7);
+        String email = this.jwtService.extractEmail(token);
+        return this.findUserByEmail(email);
     }
 }

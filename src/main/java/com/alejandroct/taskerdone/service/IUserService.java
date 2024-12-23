@@ -11,4 +11,6 @@ public interface IUserService {
     User findUserByEmail(String email);
 
     UserDTO findUserDTObyEmail(String email);
+
+    User findUserByJwtToken(String authHeader);
 }

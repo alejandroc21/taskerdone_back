@@ -4,6 +4,5 @@ import java.util.List;
 
 public record ProjectDTO(
         long id,
-        String name,
-        List<ProjectMemberDTO> members
+        String name
 ) {}

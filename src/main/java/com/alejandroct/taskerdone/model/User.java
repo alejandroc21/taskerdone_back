@@ -29,4 +29,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Member> memberships;
+
+    @OneToMany(mappedBy = "user")
+    private List<Project> projects;
 }
