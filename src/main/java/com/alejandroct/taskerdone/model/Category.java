@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder
-public class Project {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -22,15 +22,9 @@ public class Project {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @JoinColumn(name = "project_id", nullable = false)
+    private Project project;
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
-    private List<Member> members;
-
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
-    private List<Category> categories;
-
-    @OneToMany(mappedBy = "project", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "category")
     private List<Task> tasks;
 }

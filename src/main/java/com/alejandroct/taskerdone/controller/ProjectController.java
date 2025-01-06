@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/projects")
+@RequestMapping("project")
 @RequiredArgsConstructor
 public class ProjectController {
     private final IProjectService projectService;
 
-    @GetMapping("by-user")
+    @GetMapping("/list-by-user")
     public ResponseEntity<List<ProjectDTO>> projectsListByUser(@RequestHeader(HttpHeaders.AUTHORIZATION) String authHeader){
         return ResponseEntity.ok(this.projectService.projectsListByUser(authHeader));
     }
 
-    @GetMapping
+    @GetMapping("/list")
     public ResponseEntity<List<ProjectDTO>> projectsListByMembership(@RequestHeader(HttpHeaders.AUTHORIZATION) String authHeader,
                                                                      @RequestParam(required = false) MemberRole role){
 

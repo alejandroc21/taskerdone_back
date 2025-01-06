@@ -1,5 +1,6 @@
 package com.alejandroct.taskerdone.service.impl;
 
+import com.alejandroct.taskerdone.constants.ExceptionMessages;
 import com.alejandroct.taskerdone.dto.ProjectDTO;
 import com.alejandroct.taskerdone.dto.ProjectDetailsDTO;
 import com.alejandroct.taskerdone.enums.MemberRole;
@@ -45,7 +46,7 @@ public class ProjectServiceImpl implements IProjectService {
         User user = this.userService.findUserByJwtToken(authHeader);
         Optional<Project> project = this.projectRepository.findByIdAndUserId(projectId,user.getId());
         if(project.isEmpty()){
-            throw new EntityNotFoundException("project not found");
+            throw new EntityNotFoundException(ExceptionMessages.PROJECT_NOT_FOUND);
         }
         return Mappers.getProjectDetails(project.get());
     }
